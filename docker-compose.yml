@@ -1,0 +1,21 @@
+services:
+  portfolio-web:
+    build: .
+    container_name: abdullah-portfolio-container
+    ports:
+      - "8080:80"
+    environment:
+      - APP_ENV=production
+      - AUTHOR=Abdullah
+    volumes:
+      - nginx_logs:/var/log/nginx
+    networks:
+      - portfolio_net
+    restart: unless-stopped
+
+volumes:
+  nginx_logs:
+
+networks:
+  portfolio_net:
+    driver: bridge
